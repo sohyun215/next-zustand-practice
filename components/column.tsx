@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { Status, useTaskStore } from '@/lib/store';
 import Task from './task';
@@ -27,6 +27,10 @@ export default function Column({
     updateTask(draggedTask, status);
     dragTask(null); // 옮긴 후에 현재 드래그중인 Task가 없어야하므로 set null
   };
+
+  useEffect(() => {
+    useTaskStore.persist.rehydrate();
+  }, []);
 
   return (
     <section className="h-[600px] flex-1">
