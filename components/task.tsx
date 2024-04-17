@@ -7,7 +7,7 @@ export default function Task({
   status,
 }: {
   title: string;
-  description: string;
+  description?: string;
   status: string;
 }) {
   return (
